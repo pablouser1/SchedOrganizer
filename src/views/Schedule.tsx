@@ -78,7 +78,7 @@ const Schedule: Component = () => {
                     {subjects[subject].extra.length > 0 ? (
                       <a class="clickable" onClick={() => openModal(subjects[subject] as Subject)}>{subjects[subject].name}</a>
                     ) : <span>{subjects[subject].name}</span>}
-                  </td> 
+                  </td>
                 }</For>
               </tr>
             }</For>

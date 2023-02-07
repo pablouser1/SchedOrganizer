@@ -8,10 +8,10 @@ const Modal: Component<ModalProps> = props => {
   }
 
   return (
-    <dialog open={props.opened}>
+    <dialog open={props.opened} onClick={e => e.target.tagName === 'DIALOG' && closeModal()}>
       <article>
         <header>
-          <a onClick={() => closeModal()} aria-label="Close" class="close clickable"></a>
+          <a onClick={closeModal} aria-label="Close" class="close clickable"></a>
           {props.subject.name}
         </header>
         <ExtraHandler extra={props.subject.extra} />
