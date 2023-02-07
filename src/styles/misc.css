@@ -1,0 +1,7 @@
+.clickable {
+  cursor: pointer;
+}
+
+.new-line {
+  white-space: pre-wrap;
+}

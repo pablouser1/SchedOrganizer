@@ -1,0 +1,10 @@
+// Set the root element
+$semantic-root-element: "#root";
+
+// Enable <header>, <main>, <footer> inside $semantic-root-element as containers
+$enable-semantic-container: true;
+
+// Enable .classes
+$enable-classes: false;
+
+@import '@picocss/pico';
