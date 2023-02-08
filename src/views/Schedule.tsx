@@ -47,7 +47,7 @@ const Schedule: Component = () => {
     const date = new Date();
     const now = date.toTimeString().split(' ')[0]
 
-    const valid = dayOfWeek === date.getDay() && now > from && now < to;
+    const valid = dayOfWeek === date.getDay() - 1 && now > from && now < to;
 
     if (valid) {
       setCurrentSubject(id);
