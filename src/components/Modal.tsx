@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import type { Component } from "solid-js";
 import ModalProps from "../interfaces/ModalProps";
 import ExtraHandler from "./ExtraHandler";
 
