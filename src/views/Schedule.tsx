@@ -24,6 +24,10 @@ const Schedule: Component = () => {
   } as Sched)
 
   const [currentSubject, setCurrentSubject] = createSignal(-1)
+  
+  const getCurrentSubject = (): Subject => {
+    return subjects[currentSubject()] as Subject
+  }
 
   createEffect(() => {
     if (!params.id) {
@@ -42,11 +46,11 @@ const Schedule: Component = () => {
     setModalSubject(subject)
     setOpened(true)
   }
+  
+  const date = new Date();
+  const now = date.toTimeString().split(' ')[0]
 
-  const isCurrentSubject = (from: string, to: string, dayOfWeek: number, id: number): boolean => {
-    const date = new Date();
-    const now = date.toTimeString().split(' ')[0]
-
+  const isCurrentSubject = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
     const valid = dayOfWeek === date.getDay() - 1 && now > from && now < to;
 
     if (valid) {
@@ -88,8 +92,8 @@ const Schedule: Component = () => {
       <Modal opened={opened()} subject={modalSubject()} setOpened={setOpened} />
       {currentSubject() !== -1 ? (
         <details open>
-          <summary>{(subjects[currentSubject()] as Subject).name}</summary>
-          <ExtraHandler extra={(subjects[currentSubject()] as Subject).extra} />
+          <summary>{getCurrentSubject().name}</summary>
+          <ExtraHandler extra={getCurrentSubject().extra} />
         </details>
       ) : ''}
     </>
