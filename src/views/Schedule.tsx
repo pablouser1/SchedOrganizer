@@ -47,11 +47,11 @@ const Schedule: Component = () => {
     setOpened(true)
   }
   
-  const date = new Date();
-  const now = date.toTimeString().split(' ')[0]
+  const d = new Date();
+  const now = d.toTimeString().split(' ')[0]
 
   const isCurrentSubject = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
-    const valid = dayOfWeek === date.getDay() - 1 && now > from && now < to;
+    const valid = dayOfWeek === d.getDay() - 1 && now > from && now < to;
 
     if (valid) {
       setCurrentSubject(id);
