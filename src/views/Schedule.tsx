@@ -48,6 +48,7 @@ const Schedule: Component = () => {
   }
   
   const d = new Date();
+  const currentDay = d.getDay();
   const now = d.toTimeString().split(' ')[0]
 
   const isCurrentSubject = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
@@ -67,18 +68,18 @@ const Schedule: Component = () => {
         <table>
           <thead>
             <tr>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th>
+            <For each={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']}>{(day, i) =>
+              <th>{i() === currentDay - 1 ? (
+                <strong style="color: green">{day}</strong>
+              ) : <span>{day}</span>}</th>
+            }</For>
             </tr>
           </thead>
           <tbody>
             <For each={sanitizedSchedule().items}>{row => 
               <tr>
                 <For each={row.ids}>{(subject, i) =>
-                  <td style={{'background-color': isCurrentSubject(row.from, row.to, i(), subject) ? 'green' : 'transparent'}}>
+                  <td style={{'background-color': isCurrentSubject(row.from, row.to, i(), subject) ? '#FED8B1' : 'inherit'}}>
                     {subjects[subject].extra.length > 0 ? (
                       <a class="clickable" onClick={() => openModal(subjects[subject] as Subject)}>{subjects[subject].name}</a>
                     ) : <span>{subjects[subject].name}</span>}
