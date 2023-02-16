@@ -68,16 +68,19 @@ const Schedule: Component = () => {
         <table>
           <thead>
             <tr>
-            <For each={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']}>{(day, i) =>
-              <th>{i() === currentDay - 1 ? (
-                <strong style="color: green">{day}</strong>
-              ) : <span>{day}</span>}</th>
-            }</For>
+              {/* First header left intentionally blank */}
+              <th></th>
+              <For each={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']}>{(day, i) =>
+                <th>{i() === currentDay - 1 ? (
+                  <strong style="color: green">{day}</strong>
+                ) : <span>{day}</span>}</th>
+              }</For>
             </tr>
           </thead>
           <tbody>
             <For each={sanitizedSchedule().items}>{row => 
               <tr>
+                <td>{row.from.slice(0, -3)} - {row.to.slice(0, -3)}</td>
                 <For each={row.ids}>{(subject, i) =>
                   <td style={{'background-color': isCurrentSubject(row.from, row.to, i(), subject) ? '#FED8B1' : 'inherit'}}>
                     {subjects[subject].extra.length > 0 ? (
