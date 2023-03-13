@@ -1,8 +1,8 @@
-import { Setter } from "solid-js";
-import Subject from "./Subject";
+import type { Setter } from "solid-js";
+import Entry from "./Entry";
 
 export default interface ModalProps {
     opened: boolean;
-    subject: Subject;
+    entry: Entry;
     setOpened: Setter<boolean>;
 }

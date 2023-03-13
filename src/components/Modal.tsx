@@ -12,9 +12,9 @@ const Modal: Component<ModalProps> = props => {
       <article>
         <header>
           <a onClick={closeModal} aria-label="Close" class="close clickable"></a>
-          {props.subject.name}
+          {props.entry.name}
         </header>
-        <ExtraHandler extra={props.subject.extra} />
+        <ExtraHandler extra={props.entry.extra} />
       </article>
     </dialog>
   )

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 0,
+    "name": "Entry 1",
+    "extra": [
+      {
+        "type": "url",
+        "title": "Link",
+        "data": "https://example.com"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Entry 2",
+    "extra": []
+  },
+  {
+    "id": 2,
+    "name": "Entry 3",
+    "extra": [
+      {
+    		"type": "text",
+    		"title": "Text",
+    		"data": "Example text"
+    	}
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Entry 4",
+    "extra": [
+      {
+        "type": "text",
+        "title": "Text",
+        "data": "Example text"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Entry 5",
+    "extra": [
+      {
+        "type": "url",
+        "title": "Link",
+        "data": "https://example.com"
+      },
+      {
+        "type": "text",
+        "title": "Text",
+        "data": "Example text"
+      }
+    ]
+  }
+]

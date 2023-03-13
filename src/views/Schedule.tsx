@@ -1,32 +1,31 @@
 import { Component, createEffect, createSignal, For } from "solid-js";
 import { useParams } from "@solidjs/router";
-import subjects from "../data/subjects.json";
-import schedules from "../data/schedules.json";
-import Subject from "../interfaces/Subject";
+import Entry from "../interfaces/Entry";
 import Modal from "../components/Modal";
-import ScheduleParams from "../interfaces/ScheduleParams";
 import Sched from "../interfaces/Sched";
 import ExtraHandler from "../components/ExtraHandler";
+import entries from "../data/entries.json";
+import schedules from "../data/schedules.json";
 
 const Schedule: Component = () => {
-  const params: ScheduleParams = useParams()
+  const params: {id: string} = useParams()
 
   const [opened, setOpened] = createSignal(false);
-  const [modalSubject, setModalSubject] = createSignal({
+  const [modalEntry, setModalEntry] = createSignal({
     id: -1,
     name: "Placeholder",
     extra: []
-  } as Subject)
+  } as Entry)
 
   const [sanitizedSchedule, setSanitizedSchedule] = createSignal({
     name: "Placeholder",
     items: []
   } as Sched)
 
-  const [currentSubject, setCurrentSubject] = createSignal(-1)
+  const [currentEntry, setCurrentEntry] = createSignal(-1)
   
-  const getCurrentSubject = (): Subject => {
-    return subjects[currentSubject()] as Subject
+  const getCurrentEntry = (): Entry => {
+    return entries[currentEntry()] as Entry
   }
 
   createEffect(() => {
@@ -39,11 +38,11 @@ const Schedule: Component = () => {
         items: []
       })
     }
-    setCurrentSubject(-1)
+    setCurrentEntry(-1)
   })
 
-  const openModal = (subject: Subject) => {
-    setModalSubject(subject)
+  const openModal = (entry: Entry) => {
+    setModalEntry(entry)
     setOpened(true)
   }
   
@@ -51,11 +50,11 @@ const Schedule: Component = () => {
   const currentDay = d.getDay();
   const now = d.toTimeString().split(' ')[0]
 
-  const isCurrentSubject = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
+  const isCurrentEntry = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
     const valid = dayOfWeek === d.getDay() - 1 && now > from && now < to;
 
     if (valid) {
-      setCurrentSubject(id);
+      setCurrentEntry(id);
     }
 
     return valid;
@@ -81,23 +80,24 @@ const Schedule: Component = () => {
             <For each={sanitizedSchedule().items}>{row => 
               <tr>
                 <td>{row.from.slice(0, -3)} - {row.to.slice(0, -3)}</td>
-                <For each={row.ids}>{(subject, i) =>
-                  <td style={{'background-color': isCurrentSubject(row.from, row.to, i(), subject) ? '#FED8B1' : 'inherit'}}>
-                    {subjects[subject].extra.length > 0 ? (
-                      <a class="clickable" onClick={() => openModal(subjects[subject] as Subject)}>{subjects[subject].name}</a>
-                    ) : <span>{subjects[subject].name}</span>}
-                  </td>
+                <For each={row.ids}>{(entry, i) =>
+                  entry !== -1 ? (
+                  <td style={{'background-color': isCurrentEntry(row.from, row.to, i(), entry) ? '#FED8B1' : 'inherit'}}>
+                    {entries[entry].extra.length > 0 ? (
+                      <a class="clickable" onClick={() => openModal(entries[entry] as Entry)}>{entries[entry].name}</a>
+                    ) : <span>{entries[entry].name}</span>}
+                  </td>) : <td>-</td>
                 }</For>
               </tr>
             }</For>
           </tbody>
         </table>
       </figure>
-      <Modal opened={opened()} subject={modalSubject()} setOpened={setOpened} />
-      {currentSubject() !== -1 ? (
+      <Modal opened={opened()} entry={modalEntry()} setOpened={setOpened} />
+      {currentEntry() !== -1 ? (
         <details open>
-          <summary>{getCurrentSubject().name}</summary>
-          <ExtraHandler extra={getCurrentSubject().extra} />
+          <summary>{getCurrentEntry().name}</summary>
+          <ExtraHandler extra={getCurrentEntry().extra} />
         </details>
       ) : ''}
     </>
