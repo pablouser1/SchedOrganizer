@@ -18,7 +18,7 @@ export default defineConfig({
         name: 'Schedule Organizer',
         short_name: 'SchedOrganizer',
         description: 'Organize your schedules easily',
-        theme_color: '#ffffff',
+        theme_color: '#11191f',
         orientation: "portrait",
         icons: [
           {
