@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal, For } from "solid-js";
+import { type Component, createEffect, createSignal, For } from "solid-js";
 import { useParams } from "@solidjs/router";
 import Entry from "../interfaces/Entry";
 import Modal from "../components/Modal";
