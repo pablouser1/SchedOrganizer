@@ -10,6 +10,10 @@ import schedules from "../data/schedules.json";
 const Schedule: Component = () => {
   const params: {id: string} = useParams()
 
+  const [date, setDate] = createSignal(new Date());
+  const currentDay = () => date().getDay();
+  const now = () => date().toTimeString().split(' ')[0];
+
   const [opened, setOpened] = createSignal(false);
   const [modalEntry, setModalEntry] = createSignal({
     id: -1,
@@ -28,6 +32,24 @@ const Schedule: Component = () => {
     return entries[currentEntry()] as Entry
   }
 
+  const openModal = (entry: Entry) => {
+    setModalEntry(entry)
+    setOpened(true)
+  }
+
+  const isCurrentEntry = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
+    const valid = dayOfWeek === currentDay() - 1 && now() > from && now() < to;
+
+    if (valid) {
+      setCurrentEntry(id);
+    }
+
+    return valid;
+  }
+
+  /**
+   * On schedule change
+   */
   createEffect(() => {
     if (!params.id) {
       setSanitizedSchedule(schedules[0])
@@ -41,24 +63,7 @@ const Schedule: Component = () => {
     setCurrentEntry(-1)
   })
 
-  const openModal = (entry: Entry) => {
-    setModalEntry(entry)
-    setOpened(true)
-  }
-  
-  const d = new Date();
-  const currentDay = d.getDay();
-  const now = d.toTimeString().split(' ')[0]
-
-  const isCurrentEntry = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
-    const valid = dayOfWeek === d.getDay() - 1 && now > from && now < to;
-
-    if (valid) {
-      setCurrentEntry(id);
-    }
-
-    return valid;
-  }
+  const refresh = () => setDate(new Date());
 
   return (
     <>
@@ -70,7 +75,7 @@ const Schedule: Component = () => {
               {/* First header left intentionally blank */}
               <th></th>
               <For each={['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']}>{(day, i) =>
-                <th>{i() === currentDay - 1 ? (
+                <th>{i() === currentDay() - 1 ? (
                   <strong style="color: green">{day}</strong>
                 ) : <span>{day}</span>}</th>
               }</For>
@@ -93,13 +98,14 @@ const Schedule: Component = () => {
           </tbody>
         </table>
       </figure>
-      <Modal opened={opened()} entry={modalEntry()} setOpened={setOpened} />
+      <button onClick={() => refresh()}>Refresh</button>
       {currentEntry() !== -1 ? (
         <details open>
           <summary>{getCurrentEntry().name}</summary>
           <ExtraHandler extra={getCurrentEntry().extra} />
         </details>
       ) : ''}
+      <Modal opened={opened()} entry={modalEntry()} setOpened={setOpened} />
     </>
   );
 };
