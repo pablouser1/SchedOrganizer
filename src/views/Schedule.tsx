@@ -10,10 +10,12 @@ import schedules from "../data/schedules.json";
 const Schedule: Component = () => {
   const params: {id: string} = useParams()
 
+  // Date config
   const [date, setDate] = createSignal(new Date());
   const currentDay = () => date().getDay();
-  const now = () => date().toTimeString().split(' ')[0];
+  const now = () => date().toLocaleTimeString().split(' ')[0];
 
+  // Modal config
   const [opened, setOpened] = createSignal(false);
   const [modalEntry, setModalEntry] = createSignal({
     id: -1,
@@ -21,13 +23,15 @@ const Schedule: Component = () => {
     extra: []
   } as Entry)
 
+  // Sched config
   const [sanitizedSchedule, setSanitizedSchedule] = createSignal({
     name: "Placeholder",
     items: []
   } as Sched)
 
+  // Entry config
   const [currentEntry, setCurrentEntry] = createSignal(-1)
-  
+
   const getCurrentEntry = (): Entry => {
     return entries[currentEntry()] as Entry
   }
