@@ -13,7 +13,7 @@ const Schedule: Component = () => {
   // Date config
   const [date, setDate] = createSignal(new Date());
   const currentDay = () => date().getDay();
-  const now = () => date().toLocaleTimeString().split(' ')[0];
+  const now = () => date().toTimeString().split(' ')[0];
 
   // Modal config
   const [opened, setOpened] = createSignal(false);
@@ -41,9 +41,9 @@ const Schedule: Component = () => {
     setOpened(true)
   }
 
-  const isCurrentEntry = (from: string, to: string, dayOfWeek: number, id: number): boolean => {    
-    const valid = dayOfWeek === currentDay() - 1 && now() > from && now() < to;
-
+  const isCurrentEntry = (from: string, to: string, dayOfWeek: number, id: number): boolean => {
+    const valid = dayOfWeek === currentDay() - 1 && now() >= from && now() <= to;
+    
     if (valid) {
       setCurrentEntry(id);
     }
