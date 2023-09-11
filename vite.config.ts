@@ -1,17 +1,12 @@
-import { defineConfig } from 'vite';
-import solidPlugin from 'vite-plugin-solid';
-import { VitePWA } from 'vite-plugin-pwa';
+import { defineConfig } from 'vite'
+import solid from 'vite-plugin-solid'
+import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   plugins: [
-    solidPlugin(),
+    solid(),
     VitePWA({
-      includeAssets: [
-        'favicon.ico',
-        'favicon-16x16.png',
-        'favicon-32x32.png',
-        'apple-touch-icon.png'
-      ],
+      registerType: 'autoUpdate',
       manifest: {
         name: 'Schedule Organizer',
         short_name: 'SchedOrganizer',
@@ -31,16 +26,6 @@ export default defineConfig({
           }
         ],
       },
-      registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      }
     })
   ],
-  server: {
-    port: 3000,
-  },
-  build: {
-    target: 'esnext',
-  },
-});
+})
