@@ -37,7 +37,7 @@ func GetAllSchedules() ([]models.Schedule, error) {
 
 func GetClosestSchedules() ([]models.Schedule, error) {
 	now := time.Now()
-	weekday := 2
+	weekday := int(now.Weekday())
 	currentTime := now.Format("15:04:05")
 
 	var schedules []models.Schedule
