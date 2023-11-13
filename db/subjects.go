@@ -9,11 +9,12 @@ func commonQuery() *gorm.DB {
 	return db.Preload("Group").Preload("Rooms")
 }
 
-func AddSubject(name string, url string, group int32) error {
+func AddSubject(name string, shortName string, url string, group int32) error {
 	subject := models.Subject{
-		Name:    name,
-		Url:     url,
-		GroupId: group,
+		Name:      name,
+		ShortName: shortName,
+		Url:       url,
+		GroupId:   group,
 	}
 
 	err := db.Create(&subject).Error

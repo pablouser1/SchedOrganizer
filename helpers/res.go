@@ -6,7 +6,7 @@ import (
 )
 
 func SendJSON(c *gin.Context, status int, data interface{}, err error, args ...string) {
-	c.Header("Content-Type", "application/json")
+	c.Header("Content-Type", "application/json; charset=utf-8")
 
 	if err != nil {
 		c.JSON(500, models.ApiRes{

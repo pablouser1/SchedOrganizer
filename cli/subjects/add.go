@@ -19,6 +19,16 @@ func AddMenu() {
 		return
 	}
 
+	shortNamePrompt := promptui.Prompt{
+		Label: "Short name",
+	}
+
+	shortName, err := shortNamePrompt.Run()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	urlPrompt := promptui.Prompt{
 		Label: "URL",
 	}
@@ -47,5 +57,5 @@ func AddMenu() {
 		return
 	}
 
-	db.AddSubject(name, url, groups[groupIndex].ID)
+	db.AddSubject(name, shortName, url, groups[groupIndex].ID)
 }
