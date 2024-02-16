@@ -3,3 +3,7 @@
 div.two-cols {
   grid-template-columns: repeat(2, 1fr)
 }
+
+.focused {
+  border: 1px solid green;
+}
