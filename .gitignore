@@ -1,25 +1,21 @@
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# build output
+dist/
+# generated types
+.astro/
 
-# Test binary, built with `go test -c`
-*.test
+# dependencies
+node_modules/
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
 
-# Go workspace file
-go.work
+# environment variables
+.env
+.env.production
 
-# Binaries linux
-/SchedOrganizer
-/gin-bin
-
-# Env files
-/.env
+# macOS-specific files
+.DS_Store

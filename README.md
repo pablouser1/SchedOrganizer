@@ -1,8 +1,7 @@
 # SchedOrganizer
-Organize schedules easily
-
-Frontend [here](https://github.com/pablouser1/SchedOrganizer-flutter)
+Organize schedules easily, now using Astro
 
 ## TODO
 * Documentation
+* Implement all features from Go + Flutter version
 * Github CI

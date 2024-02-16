@@ -1,0 +1,27 @@
+{
+  "name": "schedorganizer",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.4",
+    "@astrojs/solid-js": "^4.0.1",
+    "@picocss/pico": "^2.0.0",
+    "astro": "^4.4.0",
+    "knex": "^3.1.0",
+    "mysql2": "^3.9.1",
+    "objection": "^3.1.4",
+    "solid-js": "^1.8.15",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0"
+  }
+}
