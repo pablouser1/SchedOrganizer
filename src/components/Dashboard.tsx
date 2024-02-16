@@ -12,7 +12,7 @@ export default function Dashboard(props: Props) {
   // Quick workaround
   const schds = Object.values(props.schedules)
   return (
-    <div class="grid" style={{"grid-template-columns": "repeat(2, 1fr)"}}>
+    <div class="grid two-cols">
       <For each={schds}>{schd => {
         return (
           <article>

@@ -1,1 +1,5 @@
-@use "@picocss/pico/scss/pico"
+@use "@picocss/pico/scss/pico";
+
+div.two-cols {
+  grid-template-columns: repeat(2, 1fr)
+}

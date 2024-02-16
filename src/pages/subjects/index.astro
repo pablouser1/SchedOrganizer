@@ -1,0 +1,20 @@
+---
+import Default from '../../layouts/Default.astro'
+import { db } from '../../common'
+
+const subjects = await db.subjects.all()
+---
+
+<Default title="Subjects" description="List with all available subjects">
+  <div class="grid two-cols">
+    {subjects.map(sbj => {
+      return (
+        <article>
+          <header>{sbj.short_name}</header>
+          <p>Full name: {sbj.name}</p>
+          <a href={sbj.url}>Url</a>
+        </article>
+      )
+    })}
+  </div>
+</Default>

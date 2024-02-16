@@ -3,7 +3,7 @@ import WEEKDAYS from "../constants/weekdays";
 
 export default function Weekdays() {
   return (
-    <div class="grid">
+    <div class="grid two-cols">
       <For each={WEEKDAYS}>{(day, i) => {
         return (
           <article>
