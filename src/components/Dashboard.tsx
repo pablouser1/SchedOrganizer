@@ -19,7 +19,7 @@ export default function Dashboard(props: Props) {
             <header>
               <p><strong>{schd.subject.name}</strong></p>
             </header>
-            {now.getDay() === schd.weekday ? <Tracker schd={schd} /> : ''}
+            {now.getDay() === schd.weekday ? <Tracker schd={schd} /> : <p>{schd.timezone.start} - {schd.timezone.finish}</p>}
           </article>
         )
       }}</For>

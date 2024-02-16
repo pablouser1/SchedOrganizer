@@ -1,8 +1,8 @@
 import Common from "./Common";
 
 export default class Timezone extends Common {
-  from!: string;
-  to!: string;
+  start!: string;
+  finish!: string;
 
   static get tableName() {
     return 'timezones';
