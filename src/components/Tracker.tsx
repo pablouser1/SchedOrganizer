@@ -39,11 +39,11 @@ export default function Tracker(props: Props) {
     const sbsStart = timeNow.substract(timeStart)
     if (sbsStart > 0) {
       // Happening
-      const time = timeNow.toRemainingTime(Math.abs(sbsFinish))
+      const time = Time.remainingTime(Math.abs(sbsFinish))
       setText(`${time} left`)
     } else {
       // Early
-      const time = timeNow.toRemainingTime(Math.abs(sbsStart))
+      const time = Time.remainingTime(Math.abs(sbsStart))
       setText(`${time} early`)
     }
   }

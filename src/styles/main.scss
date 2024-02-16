@@ -1,9 +1,2 @@
 @use "@picocss/pico/scss/pico";
-
-div.two-cols {
-  grid-template-columns: repeat(2, 1fr)
-}
-
-.focused {
-  border: 1px solid green;
-}
+@use "./helpers.scss"

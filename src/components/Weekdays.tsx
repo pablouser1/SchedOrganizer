@@ -8,9 +8,7 @@ export default function Weekdays() {
     <div class="grid two-cols">
       <For each={WEEKDAYS}>{(day, i) => {
         return (
-          <article classList={{focused: now.getDay() === i()}}>
-            <a href={`/weekdays/${i()}`}>{day}</a>
-          </article>
+          <a role="button" classList={{focused: now.getDay() === i()}} href={`/weekdays/${i()}`}>{day}</a>
         )
       }}</For>
     </div>

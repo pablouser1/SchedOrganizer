@@ -1,0 +1,10 @@
+div.two-cols {
+  grid-template-columns: repeat(2, 1fr)
+}
+
+.focused {
+  --pico-primary-border: darkgreen;
+  --pico-background-color: darkgreen;
+  --pico-primary-hover-background: green;
+  --pico-primary-hover-border: green;
+}
