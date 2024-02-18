@@ -1,7 +1,7 @@
 ---
 import Default from '../../layouts/Default.astro'
 import { db } from '../../common'
-import WEEKDAYS from '../../constants/weekdays'
+import { WEEKDAYS } from '../../constants/weekdays'
 import Dashboard from '../../components/Dashboard'
 
 export async function getStaticPaths() {
@@ -20,6 +20,6 @@ const schedules = Astro.props
 const { num } = Astro.params
 ---
 
-<Default title={WEEKDAYS[num]} description=`Subjects on ${WEEKDAYS[num]}`>
+<Default title={WEEKDAYS[num].name} description=`Subjects on ${WEEKDAYS[num]}`>
   <Dashboard schedules={schedules} client:load />
 </Default>
