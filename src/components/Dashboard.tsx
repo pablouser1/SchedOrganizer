@@ -11,19 +11,21 @@ export default function Dashboard(props: Props) {
 
   // Quick workaround
   const schds = Object.values(props.schedules)
+
   return (
     <div class="grid two-cols">
       <For each={schds}>{schd => {
-        const tz = <p>{schd.timezone.start} - {schd.timezone.finish}</p>
+        const track = now.getDay() === schd.weekday
+        const tz = <p class="secondary">{schd.timezone.start} - {schd.timezone.finish}</p>
         return (
           <article>
             <header>
               <hgroup style={{"margin-bottom": "unset"}}>
                 <p><strong>{schd.subject.name}</strong></p>
-                {now.getDay() === schd.weekday ? tz : ''}
+                {track ? tz : ''}
               </hgroup>
             </header>
-            {now.getDay() === schd.weekday ? <Tracker schd={schd} /> : tz}
+            {track ? <Tracker schd={schd} /> : tz}
           </article>
         )
       }}</For>
