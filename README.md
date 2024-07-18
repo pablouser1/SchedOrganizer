@@ -1,7 +1,7 @@
 # SchedOrganizer
-Organize schedules easily, now using Astro
+Organize schedules easily, now using PHP
 
 ## TODO
 * Documentation
-* Implement all features from Go + Flutter version
-* Github CI
+* Implement rooms
+* Implement CLI

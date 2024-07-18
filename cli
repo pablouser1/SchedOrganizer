@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use App\Db\Driver;
+use App\Wrappers\Env;
+
+if (PHP_SAPI !== 'cli' || isset($_SERVER['HTTP_USER_AGENT'])) {
+  echo "Cli only!";
+  exit;
+}
+
+Env::parse(__DIR__ . '/.env');
+$cli = new League\CLImate\CLImate;
+$db = new Driver();
+
+// TODO: Make cli client

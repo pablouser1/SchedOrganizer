@@ -1,0 +1,21 @@
+{
+  "name": "pablouser1/schedorganizer",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Pablo Ferreiro",
+      "email": "me@pabloferreiro.es"
+    }
+  ],
+  "require": {
+    "bramus/router": "~1.6",
+    "league/plates": "^3.5",
+    "catfan/medoo": "^2.1",
+    "league/climate": "^3.8"
+  }
+}
