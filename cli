@@ -2,6 +2,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
+use App\Console\Main;
 use App\Db\Driver;
 use App\Wrappers\Env;
 
@@ -14,4 +15,5 @@ Env::parse(__DIR__ . '/.env');
 $cli = new League\CLImate\CLImate;
 $db = new Driver();
 
-// TODO: Make cli client
+$driver = new Main($cli, $db);
+$driver->entrypoint();
