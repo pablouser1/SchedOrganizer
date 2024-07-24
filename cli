@@ -3,17 +3,15 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Console\Main;
-use App\Db\Driver;
-use App\Wrappers\Env;
 
 if (PHP_SAPI !== 'cli' || isset($_SERVER['HTTP_USER_AGENT'])) {
   echo "Cli only!";
   exit;
 }
 
-Env::parse(__DIR__ . '/.env');
-$cli = new League\CLImate\CLImate;
-$db = new Driver();
+require_once __DIR__ . '/bootstrap.php';
 
-$driver = new Main($cli, $db);
+$cli = new League\CLImate\CLImate;
+
+$driver = new Main($cli);
 $driver->entrypoint();

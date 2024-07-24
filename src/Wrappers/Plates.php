@@ -12,10 +12,6 @@ class Plates {
       return App::VERSION;
     });
 
-    $engine->registerFunction("group_str", function (array $group): string {
-      return $group["year"] . "º " . $group["group"];
-    });
-
     echo $engine->make($template, $data);
   }
 }

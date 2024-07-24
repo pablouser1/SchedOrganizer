@@ -4,6 +4,10 @@ const timeNow = new Time(now.toTimeString().split(' ')[0]);
 const schds_sections = document.getElementsByClassName("schedule");
 const schedules = [];
 
+const setText = (text, el) => {
+  el.innerText = text;
+}
+
 const setupData = () => {
   for (const section of schds_sections) {
     const data_str = section.dataset.schd;
@@ -44,10 +48,6 @@ const run = () => {
       setText(`${time} early`, schd.element);
     }
   }
-}
-
-const setText = (text, el) => {
-  el.innerText = text;
 }
 
 const setupTimer = () => {

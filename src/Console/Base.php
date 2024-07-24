@@ -1,15 +1,13 @@
 <?php
 namespace App\Console;
-use App\Db\Driver;
+use Illuminate\Database\Eloquent\Collection;
 use League\CLImate\CLImate;
 
 abstract class Base {
   protected CLImate $cli;
-  protected Driver $db;
 
-  function __construct(CLImate $cli, Driver $db) {
+  function __construct(CLImate $cli) {
     $this->cli = $cli;
-    $this->db = $db;
   }
 
   protected function radio(array $options) {
@@ -21,11 +19,37 @@ abstract class Base {
     $runner = $options[$index]["runner"];
 
     if (is_string($runner[0])) {
-      $class = new $runner[0]($this->cli, $this->db);
+      $class = new $runner[0]($this->cli);
 
       $runner = [$class, $runner[1]];
     }
 
     call_user_func($runner);
+  }
+
+  protected function radioSection() {
+    $this->radio([
+      [
+        "name" => "List",
+        "runner" => [$this, "list"]
+      ],
+      [
+        "name" => "Add",
+        "runner" => [$this, "add"]
+      ],
+      [
+        "name" => "Delete",
+        "runner" => [$this, "delete"]
+      ]
+    ]);
+  }
+
+  protected function radioModel(Collection $m, string $key): int {
+    $names = array_column($m->toArray(), $key);
+    $input = $this->cli->radio("Choose an option:", $names);
+    $res = $input->prompt();
+
+    $index = array_search($res, $names);
+    return $index;
   }
 }

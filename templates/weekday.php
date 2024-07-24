@@ -10,14 +10,14 @@
     <article>
       <header>
         <hgroup style="margin-bottom:unset">
-          <p><strong><?= $this->e($schd["subject"]["name"]) ?></strong></p>
+          <p><strong><?= $this->e($schd->subject->name) ?></strong></p>
           <p class="secondary">
-            <?= $this->e($schd["timezone"]["start"]) ?> - <?= $this->e($schd["timezone"]["finish"]) ?>
+            <?= $this->e($schd->timezone->full) ?>
           </p>
         </hgroup>
       </header>
-      <?php if ($weekday === $schd["weekday"]): ?>
-        <section class="schedule" data-schd="<?= htmlspecialchars(json_encode($schd), ENT_QUOTES, 'UTF-8') ?>">
+      <?php if ($weekday === $schd->weekday): ?>
+        <section class="schedule" data-schd="<?= htmlspecialchars($schd->toJson(), ENT_QUOTES, 'UTF-8') ?>">
           Loading...
         </section>
       <?php endif ?>

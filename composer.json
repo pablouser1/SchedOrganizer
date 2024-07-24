@@ -15,7 +15,7 @@
   "require": {
     "bramus/router": "~1.6",
     "league/plates": "^3.5",
-    "catfan/medoo": "^2.1",
-    "league/climate": "^3.8"
+    "league/climate": "^3.8",
+    "illuminate/database": "^11.16"
   }
 }

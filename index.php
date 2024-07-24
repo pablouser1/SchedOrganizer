@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-
-\App\Wrappers\Env::parse(__DIR__ . '/.env');
+require_once __DIR__ . '/bootstrap.php';
 
 $router = new Bramus\Router\Router();
 $router->setNamespace('\App\Controllers');
