@@ -22,6 +22,10 @@ class Main extends Base implements IBase {
     [
       "name" => "Timezones",
       "runner" => [Timezones::class, "entrypoint"]
+    ],
+    [
+      "name" => "Wipe",
+      "runner" => [Wipe::class, "entrypoint"]
     ]
   ];
 
