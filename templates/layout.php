@@ -19,6 +19,7 @@
         <li><?= $this->version() ?></li>
       </ul>
       <ul>
+        <li><a href="/table">Table</a></li>
         <li><a href="/settings">Settings</a></li>
         <li><a href="/subjects">Subjects</a></li>
         <li><a href="https://github.com/pablouser1/SchedOrganizer">Source</a></li>
