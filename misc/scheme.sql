@@ -28,7 +28,7 @@ CREATE TABLE `timezones` (
 -- schedorganizer.subjects definition
 CREATE TABLE `subjects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL,
+  `name` varchar(64) NOT NULL,
   `short_name` varchar(16) NOT NULL,
   `url` longtext DEFAULT NULL,
   `group_id` int(11) NOT NULL,
@@ -47,10 +47,8 @@ CREATE TABLE `subjects_rooms` (
   PRIMARY KEY (`id`),
   KEY `subjects_classrooms_FK` (`subject_id`),
   KEY `subjects_classrooms_FK_1` (`room_id`),
-  CONSTRAINT `fk_subjects_rooms_room` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`),
-  CONSTRAINT `fk_subjects_rooms_subject` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`),
-  CONSTRAINT `subjects_classrooms_FK` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `subjects_classrooms_FK_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE
+  CONSTRAINT `subjects_rooms_rooms_FK` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `subjects_rooms_subjects_FK` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 

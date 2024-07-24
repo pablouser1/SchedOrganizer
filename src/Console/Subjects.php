@@ -1,6 +1,7 @@
 <?php
 namespace App\Console;
 use App\Models\Group;
+use App\Models\Room;
 use App\Models\Subject;
 
 class Subjects extends Base implements IModel {
@@ -24,9 +25,28 @@ class Subjects extends Base implements IModel {
   }
 
   public function add(): void {
+    // Group
     $groups = Group::all();
     $index = $this->radioModel($groups, "full");
     $group = $groups[$index];
+
+    // Rooms
+    $addedRooms = [];
+    $rooms = Room::all();
+    $options = [];
+
+    foreach ($rooms as $i => $room) {
+      $options["i-$i"] = $room->full;
+    }
+
+    $in = $this->cli->checkboxes("Choose one or more room(s)", $options);
+    $values = $in->prompt();
+
+    foreach ($values as $val) {
+      $index = explode("-", $val)[1];
+      $room = $rooms[$index];
+      $addedRooms[] = $room;
+    }
 
     // Name
     $in = $this->cli->input("Choose a name");
@@ -49,6 +69,7 @@ class Subjects extends Base implements IModel {
     $sbj->group_id = $group->id;
     $success = $sbj->save();
     if ($success) {
+      $sbj->rooms()->saveMany($addedRooms);
       $this->cli->backgroundGreen()->out("Element created!");
     } else {
       $this->cli->backgroundRed()->error("Could not create subject!");
