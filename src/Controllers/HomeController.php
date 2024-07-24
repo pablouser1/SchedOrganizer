@@ -9,11 +9,11 @@ class HomeController {
   public static function get() {
     $offset = Cookies::offset();
     $weekdays = Weekdays::ordered($offset);
-    $weekday = date("w");
+    $weekday_now = date("w");
 
     Plates::render("home", [
       "weekdays" => $weekdays,
-      "weekday" => intval($weekday),
+      "weekday_now" => intval($weekday_now),
       "offset" => $offset
     ]);
   }
