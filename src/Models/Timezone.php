@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 class Timezone extends Model {
   protected $table = 'timezones';
   public $timestamps = false;
-  protected $attributes = ['full'];
   protected $appends = ['full'];
 
   public function getFullAttribute() {

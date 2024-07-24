@@ -3,7 +3,7 @@ namespace App\Console;
 use App\Models\Group;
 use App\Models\Subject;
 
-class Subjects extends Base implements IBase {
+class Subjects extends Base implements IModel {
   public function entrypoint(): void {
     $this->cli->bold()->out("Subjects");
     $this->radioSection();

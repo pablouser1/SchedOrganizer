@@ -52,4 +52,13 @@ abstract class Base {
     $index = array_search($res, $names);
     return $index;
   }
+
+  protected function radioEnum(array $enum): int {
+    $names = array_column($enum, "name");
+    $input = $this->cli->radio("Choose an option:", $names);
+    $res = $input->prompt();
+
+    $index = array_search($res, $names);
+    return $enum[$index]->value;
+  }
 }

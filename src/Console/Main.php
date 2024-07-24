@@ -12,16 +12,16 @@ class Main extends Base implements IBase {
       "runner" => [Schedules::class, "entrypoint"]
     ],
     [
-      "name" => "Timezones",
-      "runner" => [Timezones::class, "entrypoint"]
+      "name" => "Rooms",
+      "runner" => [Rooms::class, "entrypoint"]
     ],
     [
       "name" => "Groups",
       "runner" => [Groups::class, "entrypoint"]
     ],
     [
-      "name" => "Rooms",
-      "runner" => [Rooms::class, "entrypoint"]
+      "name" => "Timezones",
+      "runner" => [Timezones::class, "entrypoint"]
     ]
   ];
 
