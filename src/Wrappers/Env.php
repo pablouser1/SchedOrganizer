@@ -1,5 +1,6 @@
 <?php
 namespace App\Wrappers;
+use App\Constants\Weekdays;
 
 class Env {
   public static function parse(string $path): void {
@@ -31,5 +32,13 @@ class Env {
       "username" => $user,
       "password" => $password
     ];
+  }
+
+  public static function weekdayOffset(): int {
+    if (!(isset($_ENV['APP_WEEKDAY_OFFSET']) && is_numeric($_ENV['APP_WEEKDAY_OFFSET']))) {
+      return Weekdays::Sunday->value;
+    }
+
+    return intval($_ENV['APP_WEEKDAY_OFFSET']);
   }
 }
