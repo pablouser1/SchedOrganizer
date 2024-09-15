@@ -6,7 +6,7 @@ use App\Wrappers\Cookies;
 use App\Wrappers\Plates;
 
 class HomeController {
-  public static function get() {
+  public static function index() {
     $offset = Cookies::offset();
     $weekdays = Weekdays::ordered($offset);
     $weekday_now = date('w');

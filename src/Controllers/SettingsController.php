@@ -6,7 +6,7 @@ use App\Wrappers\Cookies;
 use App\Wrappers\Plates;
 
 class SettingsController {
-  public static function get() {
+  public static function index() {
     $weekdays = Weekdays::cases();
     $weekday_offset = Cookies::offset();
     Plates::render('settings', [

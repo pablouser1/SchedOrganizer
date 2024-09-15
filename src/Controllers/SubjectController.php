@@ -5,9 +5,9 @@ use App\Models\Subject;
 use App\Wrappers\Plates;
 
 class SubjectController {
-  public static function get() {
+  public static function index() {
     $sbjs = Subject::all();
 
-    Plates::render("subjects", ["sbjs" => $sbjs]);
+    Plates::render('subjects', ['sbjs' => $sbjs]);
   }
 }
