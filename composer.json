@@ -13,9 +13,9 @@
     }
   ],
   "require": {
-    "bramus/router": "~1.6",
-    "league/plates": "^3.5",
-    "league/climate": "^3.8",
-    "illuminate/database": "^11.16"
+    "bramus/router": "^1.6",
+    "league/plates": "^3.6",
+    "league/climate": "^3.10",
+    "illuminate/database": "^11.45"
   }
 }
