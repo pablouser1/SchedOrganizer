@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ["title" => "Weekday"]) ?>
+<?php $this->layout('layout', ["title" => "Subjects"]) ?>
 
 <div class="grid two-cols">
   <?php foreach ($sbjs as $sbj): ?>
@@ -10,7 +10,7 @@
       </header>
       <section>
         <p>Full name: <?= $this->e($sbj->name) ?></p>
-        <?php if ($sbj['url'] !== null): ?>
+        <?php if ($sbj['url'] !== null && $sbj['url'] !== ''): ?>
           <a class="secondary" href="<?= $this->e($sbj->url) ?>">URL</a>
         <?php endif ?>
       </section>
