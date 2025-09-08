@@ -27,6 +27,12 @@ class Subjects extends Base implements IModel {
   public function add(): void {
     // Group
     $groups = Group::all();
+
+    if ($groups->isEmpty()) {
+      $this->cli->backgroundRed()->error("No groups found!");
+      return;
+    }
+
     $index = $this->radioModel($groups, "full");
     $group = $groups[$index];
 
