@@ -10,7 +10,11 @@
     <article>
       <header>
         <hgroup style="margin-bottom:unset">
-          <p><strong><?= $this->e($schd->subject->name) ?></strong></p>
+          <p>
+            <a href="/subjects#subject-<?=$this->e($schd->subject->id)?>">
+              <strong><?= $this->e($schd->subject->name) ?></strong>
+            </a>
+          </p>
           <p class="secondary">
             <?= $this->e($schd->timezone->full) ?>
           </p>

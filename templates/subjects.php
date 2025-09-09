@@ -2,7 +2,7 @@
 
 <div class="grid two-cols">
   <?php foreach ($sbjs as $sbj): ?>
-    <article>
+    <article id="subject-<?=$this->e($sbj->id)?>">
       <header>
         <hgroup style="margin-bottom:unset">
           <p><strong><?= $this->e($sbj->short_name) ?></strong></p>
