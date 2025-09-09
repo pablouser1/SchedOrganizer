@@ -75,7 +75,7 @@ class Subjects extends Base implements IModel {
     $sbj->group_id = $group->id;
     $success = $sbj->save();
     if ($success) {
-      $sbj->rooms()->saveMany($addedRooms);
+      $sbj->rooms()->sync($addedRooms);
       $this->cli->backgroundGreen()->out("Element created!");
     } else {
       $this->cli->backgroundRed()->error("Could not create subject!");

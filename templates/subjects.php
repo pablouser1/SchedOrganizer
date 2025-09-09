@@ -17,7 +17,7 @@
       <section>
         <p>Group: <?= $this->e($sbj->group->full) ?></p>
       </section>
-      <?php if (count($sbj->rooms) > 0): ?>
+      <?php if ($sbj->rooms->isNotEmpty()): ?>
       <section>
         <p>Rooms:</p>
         <ul>
